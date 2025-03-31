@@ -1,9 +1,12 @@
+```mermaid
 sequenceDiagram
     participant browser
     participant server
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-	
+    activate server
+    server-->>browser: 
+    deactivate server	
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
@@ -26,3 +29,4 @@ sequenceDiagram
     deactivate server
 
     Note right of browser: renders the notes including the one just submitted
+```
