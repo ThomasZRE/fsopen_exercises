@@ -25,4 +25,4 @@ sequenceDiagram
     server-->>browser: [{"content": "test", "date": "2025-03-31T15:19:20.945Z"}, ..., {"content": "Weebo", "date": "2025-03-31T20:43:55.492Z"}]
     deactivate server
 
-	Note right of browser: renders the notes including the one just submitted
+    Note right of browser: renders the notes including the one just submitted
