@@ -35,34 +35,48 @@ function App() {
 
 export default App
 */
+import { useState } from "react"
 
-const Hello = (props) => {
-  console.log(props)
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
   return (
     <div>
-      <p>
-        Hello {props.name}, you are {props.age} years old!
-      </p>
+      buton press history: {props.allClicks.join(' ')}
     </div>
   )
 }
 
-const App = () => {
-  const friends = [
-    {name: 'Gregory', age: 4},
-    {name: 'Maya', age: 5},
-  ]
+const Display = (props) => <div>{props.value}</div>
 
-  const bffs = ['Greg', 'Maya']
+const Button = (props) => (
+    <button onClick={props.onClick}>
+      {props.text}
+    </button>
+  )
+
+
+const App = () => {
+  const [ value, setValue ] = useState(10)
+
+  const setToValue = (newValue) => {
+    console.log('value now', newValue)
+    setValue(newValue)
+  }
   
   return (
-    <>
-      <h1>Greetings</h1>
-      <Hello name={friends[0].name} age={friends[0].age}/>
-      <Hello name={friends[1].name} age={friends[1].age}/>
-      <p>{bffs}</p>
-    </>
+    <div>
+      <Display value={value} />
+      <Button onClick={() => setToValue(1000)} text='Thousand'/>
+      <Button onClick={() => setToValue(0)} text='Zero'/>
+      <Button onClick={() => setToValue(value + 1)} text='Increment'/>
+    </div>
   )
-}
+} 
 
 export default App
