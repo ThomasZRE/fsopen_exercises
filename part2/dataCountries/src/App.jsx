@@ -2,11 +2,11 @@
 fetch('https://api.openweathermap.org/data/3.0/onecall?lat=64&lon=26&appid=45da62ea28cacaf70f94cf76c2101503').then(res => {
     if (res.status === 401){console.log('Unauthorized')}else{console.log(res)} }).catch(e => console.log('Could not get data:', e))
 */
-
-
 import { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
+
+const api_key = import.meta.env.VITE_SOME_KEY
 
 const DisplayCountries = (props) => {
   const len = props.countriesFiltered.length
@@ -71,7 +71,7 @@ const App = () => {
 
   const getWeather = (lat, lon) => {
     const weatherHook = () => {
-      const appId = 'd9ca3d188456fdd24678511c1f65c9fe'
+      const appId = api_key
       axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appId}`).then(res => {
         console.log(res)
       })
